@@ -1,17 +1,28 @@
 package azc.uam.iterator;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import azc.uam.iterator.controller.ScheduleController;
+import azc.uam.iterator.model.contact.Contact;
+import azc.uam.iterator.model.schedule.Schedule;
+import azc.uam.iterator.view.ConsoleView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Christian Aguilera Yamal - 2203032706
+ */
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        List<Contact> contacts = new ArrayList<Contact>();
+        Schedule schedule = new Schedule(contacts);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        //Just for injection
+        schedule.add(new Contact("Ana", "222-222-222"));
+        schedule.add(new Contact("Juan", "111-111-111"));
+        schedule.add(new Contact("Paola", "333-333-333"));
+
+        ConsoleView view = new ConsoleView();
+        ScheduleController controller = new ScheduleController(schedule, view);
+        controller.showSchedule();
     }
 }

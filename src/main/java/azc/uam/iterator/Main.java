@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        List<Contact> contacts = new ArrayList<Contact>();
+        List<Contact> contacts = new ArrayList<>();
         Schedule schedule = new Schedule(contacts);
 
         //Just for injection
